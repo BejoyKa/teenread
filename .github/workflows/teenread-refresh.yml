@@ -1,0 +1,46 @@
+name: Teenread refresh
+
+on:
+  # On demand only (no daily schedule): the page's "Fetch latest reads" button
+  # or "Run workflow" on the Actions tab.
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: teenread
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Generate today's Teenread
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
+          MAX_SEARCHES: ${{ vars.MAX_SEARCHES }}
+        run: python scripts/generate.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "teenread-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html archive/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Teenread: $(TZ=America/Toronto date +%F)"
+            git push
+          fi
