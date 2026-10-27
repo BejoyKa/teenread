@@ -12,7 +12,7 @@ Produce a source-linked, newspaper-style page of the most exciting, trustworthy 
   - `Teenread.html` - the latest edition, with the "Fetch latest reads" button.
   - `YYYY-MM-DD-teenread.html` - one dated edition per day.
   - `make-refresh-key.html` - locks a GitHub token with the Teenread password into `refresh-key.json`.
-  - `github-repo/` - the published site, its own GitHub repo `BejoyKa/teenread`, served at `https://bejoyka.github.io/teenread/`. Everything for Teenread lives here, separate from Daily Tech Dose. `index.html` is today's edition, `archive/` holds every dated edition plus `archive/index.html`, `scripts/template.html` is the page shell (including the side characters), `scripts/generate.py` builds an edition with the Claude API, `.github/workflows/teenread-refresh.yml` runs it when the Fetch button is pressed, and `refresh-key.json` holds the token locked with Teenread's own password (never the Daily Tech Dose one).
+  - `github-repo/` - the published site, its own GitHub repo `BejoyKa/teenread`, served at `https://bejoyka.github.io/teenread/`. Everything for Teenread lives here, separate from Daily Tech Dose. `index.html` is today's edition, `archive/` holds every dated edition plus `archive/index.html`, `scripts/template.html` is the page shell, `scripts/generate.py` builds an edition with the Claude API, `.github/workflows/teenread-refresh.yml` runs it when the Fetch button is pressed, and `refresh-key.json` holds the token locked with Teenread's own password (never the Daily Tech Dose one).
 - Story markup always sits between `<!--CONTENT START-->` and `<!--CONTENT END-->`. When updating a page, replace only what sits between those markers plus the date in `<title>` and the masthead, keeping the buttons, CSS and script intact.
 - Before building, check the newest dated edition to find the last edition date (Workflow step 1), match its structure, and avoid repeating its stories.
 
@@ -42,9 +42,9 @@ A bright, curious 13-year-old girl. She likes big "whoa" facts, mysteries, anima
 6. Build the page (below). Save `YYYY-MM-DD-teenread.html` and `Teenread.html` in the Teen Reads folder, update the site copy (`github-repo/index.html`, `github-repo/archive/`), present the page, and give a 2-3 line chat summary.
 
 ## Page design (strict)
-The same simple, traditional newspaper layout as Daily Tech Dose. Black text on a light warm-white background. No colours, gradients, or emojis in the stories.
+The same simple, traditional newspaper layout as Daily Tech Dose. Black text on a light warm-white background. No colours, gradients, images, or emojis.
 
-- **Side characters**: the page shell uses cut-out character images the user supplied: a small one under the Archives button and another under the Fetch button (they flank the title on phones), a larger figure in the right-hand margin on wide screens (small above the footer on phones), and a centred strip of sword, scabbard, butterflies and potion bottles at the end of the page. All have transparent backgrounds. They live in `scripts/template.html`; never add images inside the story markup, and do not draw copyrighted characters.
+- **No pictures**: the page has no images or character art anywhere; text and rules only.
 
 - **Masthead**: centered serif title "Teenread", a small tagline "Big ideas for curious minds", date and coverage window beneath, thin black rules above and below. "Archives" link at top left, "Fetch latest reads" button at top right.
 - **Layout**: a lead story at the top (larger headline), then stories in a 2-3 column grid on desktop (single column on mobile), grouped under small-caps section headings in this order: Space & Sky, Science & Discovery, Amazing Animals & Nature, Planet Earth & Geography, History & Mysteries, Around the World, Young Changemakers & Creators, Did You Know? Thin black rules between sections and stories.
