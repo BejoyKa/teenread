@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teenread — November 15, 2026</title>
+<style>
+  :root{color-scheme:light}
+  body{background:#faf9f5;color:#1a1a1a;font-family:Georgia,"Times New Roman",serif;margin:0;padding:0 24px 60px;line-height:1.5;font-size:16.5px}
+  .wrap{max-width:1100px;margin:0 auto}
+  .masthead{text-align:center;border-top:4px double #1a1a1a;border-bottom:1px solid #1a1a1a;margin-top:28px;padding:18px 0 12px}
+  .masthead h1{font-size:54px;letter-spacing:1px;margin:0;font-weight:700}
+  .masthead p{margin:6px 0 0;font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+  h2{font-variant:small-caps;font-size:22px;letter-spacing:1px;margin:38px 0 18px;padding:6px 0;border-top:2px solid #1a1a1a;border-bottom:1px solid #1a1a1a}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 32px}
+  article{border-bottom:1px solid #1a1a1a;padding:0 0 14px;margin-bottom:16px}
+  details summary{cursor:pointer;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  h3{font-size:21px;line-height:1.25;margin:0 0 4px}
+  summary:hover h3{text-decoration:underline}
+  .meta{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin:0 0 6px}
+  .crux{margin:0}
+  .more{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin:6px 0 0;text-decoration:underline}
+  details[open] .more{display:none}
+  .detail{margin-top:12px;padding-top:10px;border-top:1px dotted #1a1a1a}
+  .detail p{margin:0 0 10px}
+  a{color:#1a1a1a}
+  .lead{border-bottom:2px solid #1a1a1a;padding-bottom:18px;margin:26px 0 8px}
+  .lead h3{font-size:40px;line-height:1.1}
+  .lead .crux{font-size:19px}
+  .lead .detail{column-count:2;column-gap:32px}
+  .lead .detail p{break-inside:avoid-column}
+  .watch ul{margin:0;padding-left:20px}
+  .watch li{margin-bottom:8px}
+  footer{margin-top:40px;border-top:4px double #1a1a1a;padding-top:10px;text-align:center;font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+  @media(max-width:700px){.masthead h1{font-size:36px}.lead h3{font-size:28px}.lead .detail{column-count:1}}
+
+  .masthead{position:relative}
+  .refresh{position:absolute;top:14px;right:0;text-align:right;font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;max-width:300px}
+  .refresh button{font:inherit;text-transform:uppercase;background:#faf9f5;color:#1a1a1a;border:1px solid #1a1a1a;padding:8px 14px;cursor:pointer}
+  .refresh button:hover{background:#1a1a1a;color:#faf9f5}
+  .refresh button:disabled{opacity:.5;cursor:default;background:#faf9f5;color:#1a1a1a}
+  .refresh .msg{margin-top:6px;letter-spacing:.3px;line-height:1.4}
+  .refresh form{margin-top:8px;text-align:left;border:1px solid #1a1a1a;padding:10px;background:#faf9f5}
+  .refresh input[type=password]{width:100%;box-sizing:border-box;font-size:16px;padding:6px;border:1px solid #1a1a1a;background:#fff;color:#1a1a1a;margin:6px 0}
+  .refresh label.rem{display:block;margin:0 0 8px;letter-spacing:.3px}
+  .refresh .link{background:none;border:0;padding:0;text-decoration:underline;text-transform:none;letter-spacing:.3px;cursor:pointer}
+  .refresh .link:hover{background:none;color:#1a1a1a}
+  @media(max-width:700px){.refresh{position:static;max-width:none;text-align:center;margin-bottom:10px}}
+  .masthead p.tag{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:17px;letter-spacing:0;text-transform:none;margin:2px 0 0}
+  .detail h4{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin:16px 0 6px;font-weight:700}
+  .detail h4:first-child{margin-top:0}
+  .detail ul.facts{margin:0 0 10px;padding-left:20px}
+  .detail ul.facts li{margin-bottom:5px}
+  .detail p.cool,.detail p.think{border-left:3px solid #1a1a1a;padding-left:12px}
+  .detail p.think{font-style:italic}
+  details[open]>summary .more{display:block;font-size:0;letter-spacing:0}
+  details[open]>summary .more::after{content:"Collapse";font-size:11px;letter-spacing:1px}
+  .detail .less{margin:14px 0 0}
+  .detail .less button{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;background:#faf9f5;color:#1a1a1a;border:1px solid #1a1a1a;padding:6px 12px;cursor:pointer}
+  .detail .less button:hover{background:#1a1a1a;color:#faf9f5}
+  .lead .detail h4,.lead .detail ul{break-inside:avoid-column}
+  .lead .detail .less{column-span:all}
+  .refresh{z-index:2}
+  .refresh .msg{background:#faf9f5}
+  .archlink{position:absolute;top:14px;left:0;font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#1a1a1a;text-decoration:none;border:1px solid #1a1a1a;padding:8px 14px}
+  .archlink:hover{background:#1a1a1a;color:#faf9f5}
+  @media(max-width:700px){.archlink{position:static;display:inline-block;margin-bottom:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <a class="archlink" href="./">Archives</a>
+  <div class="refresh" id="refresh" hidden>
+    <button type="button" id="fetchBtn">Fetch latest reads</button>
+    <div class="msg" id="fetchMsg" role="status" aria-live="polite"></div>
+    <form id="pwForm" hidden autocomplete="on">
+      Enter your refresh password.
+      <input type="text" name="username" value="teenread" autocomplete="username" hidden>
+      <input type="password" id="pwInput" name="password" autocomplete="current-password" required>
+      <label class="rem"><input type="checkbox" id="pwRemember" checked> Remember on this device</label>
+      <button type="submit">Unlock &amp; fetch</button>
+      <button type="button" class="link" id="pwCancel">Cancel</button>
+    </form>
+  </div>
+  <h1>Teenread</h1>
+  <p class="tag">Big ideas for curious minds</p>
+  <p>Sunday, November 15, 2026 &nbsp;·&nbsp; Coverage: Nov 10–Nov 15, 2026</p>
+</header>
+
+<!--CONTENT START-->
+<article class="lead"><details><summary><p class="meta">Space.com · Nov 14, 2026</p><h3>The Giant Starship Comes Home From Orbit, Standing Up</h3><p class="crux">SpaceX's Starship flew into orbit on 13 November and stayed up for about 22 hours. Then its upper stage came back to Earth and landed upright, which no rocket's upper stage had ever done after reaching orbit.</p><p class="more">Read more</p></summary>
+ <div class="detail">
+  <h4>What happened</h4>
+  <p>On Friday 13 November, SpaceX launched the 15th test flight of Starship from Starbase in Texas. Starship is the biggest rocket ever flown. It comes in two parts: a giant first-stage booster called Super Heavy, and an upper stage called the Ship, which keeps going up into space. Before launch, SpaceX said it would try a "double catch", bringing both parts home. Nobody had ever done that before.</p>
+  <p>Things didn't go exactly to plan. Space.com reports that SpaceX skipped the booster landing on this flight. The Ship carried on and reached orbit, then spent about 22 hours circling Earth. After that it came back through the atmosphere and landed. Space.com's headline called it the first time Starship has landed from orbit. Wikipedia's record of the flight describes it as the first successful upright landing of a rocket's upper stage after reaching orbit.</p>
+  <h4>The numbers</h4>
+  <ul class="facts">
+   <li>Liftoff: 22:47 UTC on 13 November 2026, which was 4:47 p.m. local time in Texas.</li>
+   <li>Launch site: Orbital Launch Pad 2 at Starbase. The US aviation regulator, the FAA, approved the flight on launch day itself.</li>
+   <li>Hardware: a Block 3 Super Heavy (Booster 22) and Ship 42.</li>
+   <li>Orbit height: about 275 km (171 miles). That's lower than the International Space Station.</li>
+   <li>Flight time: about 22 hours. The Ship began re-entry roughly 22 hours and 10 minutes after launch.</li>
+  </ul>
+  <h4>The science behind it</h4>
+  <p>Most rockets are used once and thrown away, a bit like using a jumbo jet for a single flight and then scrapping it. Getting a booster back is hard. Getting an upper stage back from orbit is much harder. It is moving at around 28,000 km/h, so it has to survive the scorching heat of slamming into the air. Then it has to slow from faster than sound to almost nothing, flip upright and set down gently.</p>
+  <p>If both stages can be flown again, launches could get much cheaper. That matters for big plans like carrying cargo and people to the Moon and, one day, to Mars.</p>
+  <p class="cool"><strong>Why it's cool:</strong> Rockets landing themselves used to be science fiction. You just saw a spaceship do it after a whole day in orbit.</p>
+  <p class="think"><strong>Think about it:</strong> If space rockets became as reusable as aeroplanes, what is the first thing you'd want humans to build or do in space?</p>
+  <p><a href="https://www.space.com/news/live/spacex-starship-flight-15-live-updates-nov-14-2026-starship-first-double-landing-attempt">Read source</a></p>
+ </div></details></article>
+
+<h2>Space &amp; Sky</h2>
+<div class="grid">
+ <article><details><summary><p class="meta">Smithsonian Magazine · Nov 12, 2026</p><h3>Is There a New Dwarf Planet Hiding Beyond Pluto?</h3><p class="crux">A newly spotted icy world called 2026 ED138 takes about 281 years to go once around the Sun. If it turns out to be round, it could join Pluto in the dwarf planet club.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>The Vera C. Rubin Observatory in Chile is a new telescope built to photograph the whole southern sky again and again. Between March and June this year it kept catching a faint moving dot far beyond Neptune. The object has been named 2026 ED138. Astronomers think it may be big enough to have pulled itself into a ball, and being round is one of the tests for a dwarf planet. The find was first announced in late October. This week Smithsonian Magazine explained why scientists are excited, and what they still need to check.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Distance: 46 times farther from the Sun than Earth is, roughly 6.9 billion km.</li>
+    <li>One orbit takes 281.1 years. Since its last "birthday" in the 1740s, Earth has gone around the Sun more than 280 times.</li>
+    <li>Estimated size: 370 to 930 miles across (about 600 to 1,500 km). For comparison, Pluto is about 2,400 km wide.</li>
+    <li>Its orbit is tilted nearly 25 degrees compared with the main planets.</li>
+   </ul>
+   <h4>How do they know?</h4>
+   <p>Distant objects don't show up as discs in a telescope, just as specks of light. Astronomers work out the orbit by tracking where the speck moves from night to night. Size is harder. A small, shiny object and a big, dark one can look equally bright. That is why the size estimate covers such a wide range, and why scientists say they must pin down the size before they can classify it properly.</p>
+   <p>The tilted orbit is a clue to its past. Astronomers think Neptune's gravity nudged it long ago, flinging it onto its slanted path.</p>
+   <p class="cool"><strong>Why it's cool:</strong> Our Solar System still isn't fully mapped. A new telescope found a world that might be big enough to be called a dwarf planet, in just a few months of watching.</p>
+   <p class="think"><strong>Think about it:</strong> If this turns out to be a dwarf planet, it will need a proper name. What would you call a cold, lonely world with a 281-year year, and why?</p>
+   <p><a href="https://www.smithsonianmag.com/smart-news/astronomers-found-a-mysterious-object-orbiting-far-beyond-pluto-it-could-be-a-new-dwarf-planet-hidden-in-our-solar-system-180989857/">Read source</a></p>
+  </div></details></article>
+
+ <article><details><summary><p class="meta">Space.com · Nov 12, 2026</p><h3>Two Monster Black Holes, Side by Side at Cosmic Dawn</h3><p class="crux">The James Webb Space Telescope has found the oldest and most distant pair of quasars ever seen. Quasars are blazing beacons powered by giant black holes. Scientists can't yet explain how even one this big existed so early.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>A quasar is the brightest kind of object in the Universe. It forms when a supermassive black hole gulps down gas so fast that the swirling material around it glows brighter than a whole galaxy of stars. Astronomers using the James Webb Space Telescope, with help from the Gemini North telescope, have found two of them sitting unusually close together in the very early Universe. The pair is officially called J1602+4228AB. Its nickname, Nāpōwawāʻenakaulua, means "Two celestial bodies of fathomless powerful darkness in the brilliance of heat reincarnating energy into the universe." The results were published this week in The Astrophysical Journal Letters.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>The two black holes are about 1.5 billion and 400 million times the mass of the Sun.</li>
+    <li>They are only 18,100 light-years apart, roughly one-fifth of the way across our Milky Way.</li>
+    <li>It is the oldest, most distant and tightest quasar pair ever found.</li>
+    <li>The Webb survey behind the find, called Aether, has turned up 200 quasars. That's just under half of all the early-Universe quasars known.</li>
+   </ul>
+   <h4>How do they know?</h4>
+   <p>Webb's NIRSpec instrument splits light into a rainbow called a spectrum, and it can do this for many points in an image at once. The spectrum shows how far the light has been stretched while crossing the expanding Universe, which tells astronomers how far away and how long ago they are looking. It also reveals how fast gas is whirling around each black hole, and that gives the black hole's mass.</p>
+   <p>The puzzle is time. Black holes normally take ages to grow. One researcher told Space.com there is no clear explanation for how even a single giant quasar existed so early, "much less two."</p>
+   <p class="cool"><strong>Why it's cool:</strong> The two black holes may be in galaxies that are merging, so we could be watching a cosmic dance from the Universe's childhood.</p>
+   <p class="think"><strong>Think about it:</strong> What might help a black hole grow incredibly fast? Try to come up with two possible explanations of your own.</p>
+   <p><a href="https://www.space.com/astronomy/black-holes/astronomers-stunned-after-james-webb-space-telescope-discovers-the-earliest-pair-of-black-hole-powered-quasars">Read source</a></p>
+  </div></details></article>
+
+ <article><details><summary><p class="meta">ScienceDaily · Nov 15, 2026</p><h3>Why Uranus and Neptune Have Wonky Magnets</h3><p class="crux">The magnetic fields of Uranus and Neptune are tipped way over, and they have puzzled scientists since Voyager 2 flew past in the 1980s. A new study offers an explanation, and it suggests their magnetic poles might wander within a few decades.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>Earth's magnetic field is fairly tidy. It has a north and a south pole that sit roughly near the geographic poles, which is why a compass works. When NASA's Voyager 2 spacecraft flew past Uranus and Neptune in the 1980s, it found something strange. Both planets have magnetic fields that are messy, lopsided and tilted far from their spin axes. Scientists have been trying to explain this ever since. A new study points to what goes on deep inside the planets.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Uranus's main magnetic field is tilted by 59 degrees.</li>
+    <li>Neptune's is tilted by 47 degrees.</li>
+    <li>Earth's is tilted by only about 10 degrees.</li>
+    <li>Voyager 2 is still the only spacecraft ever to visit either planet.</li>
+    <li>Reported: the fields may shift noticeably over just a few decades, much faster than Earth's.</li>
+   </ul>
+   <h4>The science behind it</h4>
+   <p>Planets make magnetic fields with a "dynamo". Material that conducts electricity churns around inside the planet, and the moving electric charges create magnetism, much like an electric motor working in reverse. Uranus and Neptune are "ice giants". Under their atmospheres lie thick layers of hot, squeezed water, ammonia and methane.</p>
+   <p>The researchers suggest that these layers conduct electricity better the deeper you go. This shapes where and how the dynamo runs, and the result can be a field that is tilted, patchy and less stable than Earth's. The study's own title says the fields are "potentially time-varying", meaning they may drift over time.</p>
+   <h4>Why it matters</h4>
+   <p>Ice giant-sized planets turn out to be common around other stars. Understanding the two in our backyard helps scientists make sense of thousands of faraway worlds too.</p>
+   <p class="cool"><strong>Why it's cool:</strong> If a future spacecraft visits Uranus, it could find the magnetic poles in a different spot from where Voyager 2 saw them. That would be like coming back to a house after 50 years and finding the front door has moved.</p>
+   <p class="think"><strong>Think about it:</strong> If you could design the next mission to Uranus, what one question would you send it to answer first?</p>
+   <p><a href="https://www.sciencedaily.com/releases/2026/11/261114202204.htm">Read source</a></p>
+  </div></details></article>
+
+ <article><details><summary><p class="meta">ScienceDaily / NASA · Nov 12, 2026</p><h3>Perseverance Confirms Life's Ingredients Hidden in Old Mars Rocks</h3><p class="crux">NASA's Perseverance rover has confirmed complex organic carbon just below the surface of ancient Martian rocks. That is not proof of life, but it is a key ingredient for it.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>Perseverance has been exploring Jezero Crater on Mars since it landed in February 2021. Billions of years ago the crater held a lake. ScienceDaily reports that the rover has now confirmed complex organic carbon just beneath the surface of ancient rocks there. The finding hints that the building blocks of life may once have been widespread on Mars.</p>
+   <p>To be clear about what this means: "organic" in chemistry just means molecules built around carbon. Living things are made of them, but they can also form without any life at all, for example through chemical reactions in rocks or on meteorites. So this is an important clue, not a discovery of Martian life.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Where: just beneath the surface of ancient Martian rocks.</li>
+    <li>What: complex organic carbon, meaning carbon locked in larger, more complicated molecules.</li>
+    <li>Perseverance has been on Mars for over 5 years.</li>
+    <li>This builds on earlier finds. In 2025 the rover reported mudstones in Jezero with organic carbon and unusual textures that could be possible signs of past life.</li>
+   </ul>
+   <h4>The science behind it</h4>
+   <p>The surface of Mars is a harsh place for delicate molecules. The planet has no thick atmosphere or global magnetic field to shield it, so radiation from space beats down and slowly breaks organic molecules apart. A few centimetres of rock can act like sunscreen. That is why finding carbon "just beneath" the surface matters: it shows these molecules can last a very long time if they are protected.</p>
+   <p>The rover studies rocks with lasers and other instruments, and it also seals rock samples in tubes. Scientists hope to bring samples like these back to Earth one day and test them with equipment far too big to send to Mars.</p>
+   <p class="cool"><strong>Why it's cool:</strong> Each find like this brings us closer to answering one of the biggest questions there is: has life ever existed anywhere besides Earth?</p>
+   <p class="think"><strong>Think about it:</strong> What kind of evidence would convince you that something once lived on Mars? Would a chemical be enough, or would you want to see a fossil?</p>
+   <p><a href="https://www.sciencedaily.com/releases/2026/11/261111005908.htm">Read source</a></p>
+  </div></details></article>
+
+ <article><details><summary><p class="meta">EarthSky · Nov 13, 2026</p><h3>Leonid Meteors Peak This Week, and the Moon Won't Spoil Them</h3><p class="crux">The Leonid meteor shower peaks around 17-18 November. This year the Moon sets around midnight, which leaves the best hours before dawn dark enough for spotting meteors.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>Every November, Earth passes through a trail of dust left behind by Comet Tempel-Tuttle. The specks burn up in our atmosphere as the Leonid meteor shower. EarthSky says the 2026 peak is predicted for 0:00 UTC on 18 November. The best times to watch are from midnight to dawn on the mornings of 17 and 18 November.</p>
+   <p>Last month the Orionids were washed out by a nearly full Moon. This time the timing is kinder. The first quarter Moon sets around midnight, so it won't get in the way.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Peak: around 0:00 UTC on 18 November 2026. For people in the Americas, that's the evening of 17 November.</li>
+    <li>First quarter Moon: 11:48 UTC on 17 November. It sets around midnight.</li>
+    <li>Expected rate: up to about 15 meteors an hour under dark skies (AccuWeather). No big "meteor storm" is expected this year.</li>
+    <li>Leonids are among the fastest meteors, hitting the air at about 71 km per second.</li>
+   </ul>
+   <h4>The science behind it</h4>
+   <p>The meteors appear to fly out from one point in the sky called the radiant. For the Leonids, that point is inside the "Sickle" of the constellation Leo, a backwards question mark of stars. The radiant rises around midnight and is highest at dawn. That's why the hours before sunrise are best: your side of Earth is then facing into the dust stream, like the windscreen of a car driving through rain.</p>
+   <p>Every 33 years or so, when the comet itself passes close by, the Leonids have sometimes turned into storms with thousands of meteors an hour. This is not one of those years.</p>
+   <h4>How to watch</h4>
+   <p>Find a dark spot away from streetlights, dress warmly, lie back and let your eyes adjust for 20 minutes without looking at your phone. You don't need to stare at Leo, because meteors can show up anywhere in the sky.</p>
+   <p class="cool"><strong>Why it's cool:</strong> Each streak is a crumb from a comet, burning up about 100 km above your head in a flash.</p>
+   <p class="think"><strong>Think about it:</strong> If you counted meteors for one hour and got 8 instead of 15, what reasons could explain the difference?</p>
+   <p><a href="https://earthsky.org/astronomy-essentials/everything-you-need-to-know-leonid-meteor-shower/">Read source</a></p>
+  </div></details></article>
+</div>
+
+<h2>Science &amp; Discovery</h2>
+<div class="grid">
+ <article><details><summary><p class="meta">ScienceDaily · Nov 10, 2026</p><h3>A "Digital Twin" of Webb Uncovers a Planet Hiding in Plain Sight</h3><p class="crux">Scientists built a detailed computer copy of the James Webb Space Telescope's camera and used it to strip away starlight. Doing that revealed an alien planet that had been hiding in old images all along.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>Taking a picture of a planet around another star is like trying to photograph a firefly next to a stadium floodlight. The star's glare drowns the planet out. A research team has come up with a new way around this, called FLIP. They built an extremely detailed physical model of Webb's infrared camera, a "digital twin" that copies exactly how the real camera spreads out starlight. Then they used it to subtract the star's glare from real images. When they tried it on observations Webb had already made, an exoplanet appeared that nobody had noticed before.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Hidden planets found so far with the method: 1, discovered in existing Webb data.</li>
+    <li>Webb's optics stay stable to within about a nanometre, one billionth of a metre. That's roughly how much your fingernail grows in a second.</li>
+    <li>New telescope time needed: none. The method works on images that have already been taken.</li>
+   </ul>
+   <h4>The science behind it</h4>
+   <p>No telescope makes a perfect point of light. A star always shows up with a fuzzy glow and patterns of spikes and rings, which come from the shape of the telescope's mirrors and parts. If you know exactly what that pattern should look like, you can subtract it, a bit like noise-cancelling headphones removing background hum so you can hear a quiet voice.</p>
+   <p>Even Webb, which is stable to the nanometre, has tiny wobbles that blur this pattern, and one researcher said that is "still limiting." The digital twin models the camera so carefully that the leftover glare can be removed much more precisely. Faint planets that were buried in that glare can then pop out.</p>
+   <h4>Why it matters</h4>
+   <p>The team thinks Webb's archive may hold more hidden worlds, waiting to be found with nothing more than better software.</p>
+   <p class="cool"><strong>Why it's cool:</strong> Discoveries don't always need new machines. Sometimes they need a cleverer way of looking at data we already have, and that's something a good coder can do from anywhere.</p>
+   <p class="think"><strong>Think about it:</strong> What other old collections, like photos, recordings or museum drawers, might hold discoveries waiting for a new tool?</p>
+   <p><a href="https://www.sciencedaily.com/releases/2026/11/261108233028.htm">Read source</a></p>
+  </div></details></article>
+</div>
+
+<h2>Amazing Animals &amp; Nature</h2>
+<div class="grid">
+ <article><details><summary><p class="meta">ScienceDaily / University of Tübingen · Nov 12, 2026</p><h3>Crows Make Decisions Twice as Fast as Humans</h3><p class="crux">In a test of quick visual thinking, crows made accurate choices in about a quarter of a second. That's twice as fast as humans and monkeys.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>Researchers at the University of Tübingen in Germany gave crows a puzzle that scientists often use to study decision-making. A screen showed a cloud of moving dots, and the birds had to decide which way the dots were mostly heading. Sometimes the movement was obvious. Sometimes most dots wandered randomly and only a few moved together, which made it very hard to tell. The crows answered far faster than humans and monkeys usually do on similar tasks, and they were still very accurate.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Average decision time: 235 milliseconds, about a quarter of a second.</li>
+    <li>That's about twice as fast as humans and monkeys.</li>
+    <li>When the signal was clear, the crows were right nearly 100% of the time.</li>
+    <li>Even with very hard patterns, they did better than random guessing, according to researcher Philipp Schmidbauer.</li>
+   </ul>
+   <h4>How do they know?</h4>
+   <p>The moving-dots test is a classic because scientists can make it harder or easier simply by changing how many dots move together. They time each answer and check whether it is right. That lets them chart the trade-off between speed and accuracy. Answer too fast and you make mistakes; wait too long and you lose time. The crows found a remarkably good balance.</p>
+   <h4>The science behind it</h4>
+   <p>Bird brains look very different from ours. They don't have the wrinkly outer layer that mammals use for much of their thinking. But crow brains pack neurons in very tightly, and the signals travel short distances. For a bird that has to dodge, swoop and snatch food in mid-air, split-second decisions about movement could be a matter of survival.</p>
+   <p class="cool"><strong>Why it's cool:</strong> The crow on your street may be reading the world faster than you are. Being "bird-brained" might actually be a compliment.</p>
+   <p class="think"><strong>Think about it:</strong> Is deciding faster always better? Can you think of a situation where a slower decision would be the smarter one?</p>
+   <p><a href="https://www.sciencedaily.com/releases/2026/11/261111005850.htm">Read source</a></p>
+  </div></details></article>
+
+ <article><details><summary><p class="meta">ScienceDaily · Nov 12, 2026</p><h3>One Butterfly Turned Out to Be Three</h3><p class="crux">For about 200 years, scientists thought a familiar tropical butterfly was one or two species. DNA and ultraviolet "colours" we can't see show it is really three, and one of them is new to science.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>Butterflies in the genus <em>Colobura</em> are a well-known sight in tropical forests. For a long time experts were surprised enough just to learn there were two nearly identical species. Now researchers have found there are three, including one that had never been described. The study was first announced earlier this year, and ScienceDaily featured it this week.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Species thought to exist: 2. Species that actually exist: 3.</li>
+    <li>New to science: 1.</li>
+    <li>Visible difference: only slight changes in a grey stripe on the underside of the front wings.</li>
+    <li>Time the secret stayed hidden: roughly 200 years.</li>
+   </ul>
+   <h4>How do they know?</h4>
+   <p>The researchers used several kinds of evidence. First, DNA. They checked the butterflies' nuclear DNA, the main genetic instruction book in each cell, and found no sign that the three groups interbreed, even where they live in the same areas. Groups that don't mix their genes are a strong sign of separate species.</p>
+   <p>Second, light. All three reflect ultraviolet light from their wings. Our eyes can't see ultraviolet, but many insects can. Each species reflects slightly different ultraviolet wavelengths. To a butterfly, the three may look clearly different even though they look identical to us.</p>
+   <h4>The mystery</h4>
+   <p>That raises a puzzle the scientists are still working on: how do the butterflies recognise their own kind? Hidden ultraviolet patterns are one idea. Scent and behaviour could play a part too.</p>
+   <p class="cool"><strong>Why it's cool:</strong> Some animals are wearing colours we're literally blind to. A whole species was hiding behind them.</p>
+   <p class="think"><strong>Think about it:</strong> If you could see ultraviolet light for one day, where would you look first, and what do you think you'd notice?</p>
+   <p><a href="https://www.sciencedaily.com/releases/2026/11/261110042556.htm">Read source</a></p>
+  </div></details></article>
+
+ <article><details><summary><p class="meta">Earth.com · Nov 15, 2026</p><h3>Four New Frogs From Peru, Including One With Half-Red Eyes</h3><p class="crux">Biologists have named four new frog species from the Peruvian Andes. One has striking half-red eyes, and all of them dive into hidey-holes under tree roots when they're frightened.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>High in the Andes mountains of Peru, scientists have described four frog species that no one had named before. They all belong to a group of frogs called <em>Oreobates</em>. One of the new species is <em>Oreobates foliaspectrum</em>. Another is known as the Canaan frog. The most eye-catching of the four has eyes that are half red. One of the biologists behind the discovery has helped name more than 55 frog species over his career, and these four bring that total even higher.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>New species: 4.</li>
+    <li>The <em>Oreobates</em> group grows from 27 known species to 31.</li>
+    <li>Frog species named with help from one of the researchers: more than 55, before these four.</li>
+    <li>Where: the Peruvian Andes, among the most species-rich mountain regions on Earth.</li>
+   </ul>
+   <h4>How do they know?</h4>
+   <p>Naming a new species takes more than spotting an unusual frog. Scientists compare body shape, colour, size and calls with every known relative. They also read the frogs' DNA to check that the animals really are genetically distinct. The DNA sequencing for these frogs was done in San Francisco. Each new species gets a "holotype", one official specimen kept in a museum that defines the species for all future scientists.</p>
+   <h4>Hide-and-seek experts</h4>
+   <p>The researchers noticed a shared habit. All the frogs were caught next to holes under raised tree roots, and when threatened they ducked straight into them. Knowing a frog's favourite hiding place helps scientists find it again, and helps protect the habitat it depends on.</p>
+   <p class="cool"><strong>Why it's cool:</strong> Even in 2026, a single expedition can add four new animals to the list of life on Earth.</p>
+   <p class="think"><strong>Think about it:</strong> Why might a frog evolve half-red eyes? Try to come up with a reason linked to warning, hiding or finding a mate.</p>
+   <p><a href="https://www.earth.com/animals/four-new-oreobates-frog-species-peru/">Read source</a></p>
+  </div></details></article>
+</div>
+
+<h2>Planet Earth &amp; Geography</h2>
+<div class="grid">
+ <article><details><summary><p class="meta">ScienceDaily / University of New Mexico · Nov 12, 2026</p><h3>Did Earth Make Its Own Oceans?</h3><p class="crux">Many scientists think Earth's water was delivered by icy comets or asteroids. Lab experiments now suggest that hot rock and hydrogen in the young planet's fiery atmosphere could have made hundreds of oceans' worth of water.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>Where did Earth's water come from? It is one of the big puzzles in planetary science. A popular answer is that it arrived from space, carried by icy comets and water-rich asteroids crashing into the young Earth. Researchers at the University of New Mexico tested another idea. They wondered whether the baby Earth could have made water itself while it was still a glowing, molten world wrapped in hydrogen gas.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Test temperatures: 1,200 to 1,400 °C, about as hot as glowing lava or hotter.</li>
+    <li>How fast water formed: within minutes.</li>
+    <li>Possible amount made while Earth formed: hundreds of oceans' worth.</li>
+    <li>Earth is about 4.5 billion years old.</li>
+   </ul>
+   <h4>How do they know?</h4>
+   <p>The team heated small samples of silicate rock, the most common rock-forming material on rocky planets, to extreme temperatures. Then they let hydrogen gas flow over it. Water molecules are made of hydrogen and oxygen, and rock contains plenty of oxygen. In the heat, the hydrogen pulled oxygen out of the rock and formed water.</p>
+   <p>To make sure the hydrogen was really what made the difference, they repeated the experiment with helium. Helium hardly reacts with anything, so it worked as a comparison, or "control". This is one of the most important habits in science: change one thing at a time and see whether the result changes too.</p>
+   <h4>Why it matters</h4>
+   <p>If rocky planets can make water as they form, water might be a normal part of how planets are built rather than a lucky delivery. That could mean many more watery worlds around other stars.</p>
+   <p class="cool"><strong>Why it's cool:</strong> The water in your glass may have been born in a fiery, glowing sky billions of years ago, not frozen inside a comet.</p>
+   <p class="think"><strong>Think about it:</strong> If water forms naturally on rocky planets, how would that change your guess about how common life is in the Universe?</p>
+   <p><a href="https://www.sciencedaily.com/releases/2026/11/261110042549.htm">Read source</a></p>
+  </div></details></article>
+</div>
+
+<h2>History &amp; Mysteries</h2>
+<div class="grid">
+ <article><details><summary><p class="meta">ScienceDaily · Nov 10, 2026</p><h3>A "One-in-a-Million" Fossil Still Has 450-Million-Year-Old Soft Parts</h3><p class="crux">A fossil crinoid, an ancient relative of starfish, has kept traces of its soft tissue for 450 million years. It had been sitting in a museum collection, waiting for someone to notice.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>Crinoids are sea animals that look a bit like flowers on stalks, which is why some are called "sea lilies". They are actually animals, related to starfish and sea urchins, and they still live in the oceans today. Their hard, chalky skeleton parts fossilise easily, so crinoid fossils are common. Their soft body parts almost always rot away first. Scientists studying one 450-million-year-old crinoid were stunned to find that some of its soft tissue had been preserved. They called it a "one-in-a-million" find.</p>
+   <p>Perhaps the best part is where it turned up: in a museum collection. A researcher named Cole said the discovery shows how important museum collections are, along with "the community support that keeps them alive."</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Age: about 450 million years.</li>
+    <li>That is more than 200 million years before the first dinosaurs.</li>
+    <li>Soft-tissue fossils of this age are extremely rare, hence "one in a million".</li>
+    <li>Crinoids have been in Earth's oceans for hundreds of millions of years and still live there today.</li>
+   </ul>
+   <h4>How do they know?</h4>
+   <p>Soft tissue survives only when an animal is buried very fast, often in fine mud with little oxygen, so bacteria can't break it down. Over time minerals can copy the shapes of the soft parts. The researchers compared the ancient fossil with crinoids living in today's oceans to work out what the preserved tissue was. That helped them learn how these early animals lived, fed and evolved.</p>
+   <h4>A lesson from the drawers</h4>
+   <p>A fossil that looks ordinary can become a big discovery when someone studies it with a different specialty or new tools. Museums keep millions of specimens for exactly this reason.</p>
+   <p class="cool"><strong>Why it's cool:</strong> Some of the most important discoveries aren't dug out of a cliff. They're waiting on a shelf for the right pair of curious eyes.</p>
+   <p class="think"><strong>Think about it:</strong> If you were in charge of a museum with limited space, how would you decide which specimens to keep?</p>
+   <p><a href="https://www.sciencedaily.com/releases/2026/11/261105085201.htm">Read source</a></p>
+  </div></details></article>
+
+ <article><details><summary><p class="meta">ScienceDaily · Nov 10, 2026</p><h3>The Armoured Amphibian That Lived in the Sea</h3><p class="crux">No amphibian alive today can live entirely in salt water. Fossils from China show one did, 237 million years ago: a flat, armoured creature about the size of a giant salamander.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>Amphibians are frogs, toads, salamanders and their relatives. They have thin, absorbent skin, so salty water pulls water out of their bodies, and that's why none of today's amphibians can live their whole lives in the ocean. Scientists studying two beautifully preserved skeletons from China's Guizhou Province think they have found the first known exception. The animal, named <em>Gerrothorax maritimus</em>, appears to have lived fully in the sea. The study, published in <em>Nature Ecology &amp; Evolution</em>, was first reported in October. ScienceDaily ran it this week.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Age: nearly 237 million years, in the Late Triassic period, when early dinosaurs were just appearing.</li>
+    <li>Skeletons studied: 2.</li>
+    <li>Size: similar to a giant salamander. Today's Chinese giant salamander can grow longer than a metre.</li>
+    <li>The rocks formed in an ancient ocean hundreds of miles from any big landmass.</li>
+   </ul>
+   <h4>How do they know?</h4>
+   <p>Finding a fossil in ocean rock isn't enough on its own, because a body could have washed out to sea. So the team used chemistry too. Bones take in the element strontium from the water an animal lives in, and seawater strontium has its own "fingerprint" called an isotope ratio. The bones matched the fingerprint expected for Late Triassic ocean water. That is an independent line of evidence that these animals really lived in the sea.</p>
+   <h4>Built for the seafloor</h4>
+   <p>Heavy armour and a flat body suggest it spent its time on the seafloor, perhaps lying in wait for prey rather than chasing it.</p>
+   <p class="cool"><strong>Why it's cool:</strong> Evolution keeps breaking the "rules" we think animals have to follow. This creature did something no living amphibian can.</p>
+   <p class="think"><strong>Think about it:</strong> If an amphibian could live in the sea back then, why do you think none do today?</p>
+   <p><a href="https://www.sciencedaily.com/releases/2026/11/261109205409.htm">Read source</a></p>
+  </div></details></article>
+
+ <article><details><summary><p class="meta">ScienceDaily / SNSB · Nov 12, 2026</p><h3>A Treasure Map for Fossil Hunters</h3><p class="crux">Scientists looked at 540 million years of sea fossils and mapped where new species are most likely still waiting to be found. The best chances may be in surprisingly recent times, not the deep past.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>Researchers from the Bavarian State Natural History Collections in Germany (known as SNSB) took on a huge job. They analysed the fossil record of ocean life across 540 million years, looking for gaps: times and places where few fossils have been collected, even though the rocks there probably hold many. From this they built something like a treasure map, a guide showing where future digs are most likely to find species unknown to science.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Time span analysed: 540 million years of marine (sea) fossils.</li>
+    <li>One standout period: the Middle Miocene, about 15 million years ago. It has relatively few recorded finds but high potential for new discoveries.</li>
+    <li>Big surprise: some of the best chances for new species are in fairly recent geological periods, not the ancient past.</li>
+   </ul>
+   <h4>How do they know?</h4>
+   <p>The idea is like looking at a map of a city and noticing which neighbourhoods have barely been explored. The team compared how many fossils have been found from each period and region with how much of the right kind of rock exists there. Where there is lots of rock but few finds, there are probably many species nobody has described yet.</p>
+   <p>Why would recent periods be overlooked? Older fossils often get more attention because they tell us about the origins of animal groups. But Earth's seas 15 million years ago were busy with life too, and much of it has never been studied closely.</p>
+   <h4>Why it matters</h4>
+   <p>Fossil digs cost time and money. A map like this helps scientists choose where to go, so they can fill in the missing chapters of life's history faster.</p>
+   <p class="cool"><strong>Why it's cool:</strong> There is a real map pointing to undiscovered creatures, and the next fossil hunter to follow it could be you.</p>
+   <p class="think"><strong>Think about it:</strong> If you led a fossil dig, would you go somewhere well studied with a known chance of success, or take a risk on an unexplored "gap"? Why?</p>
+   <p><a href="https://www.sciencedaily.com/releases/2026/11/261112025529.htm">Read source</a></p>
+  </div></details></article>
+</div>
+
+<h2>Young Changemakers &amp; Creators</h2>
+<div class="grid">
+ <article><details><summary><p class="meta">Space.com · Nov 13, 2026</p><h3>Astronaut Suni Williams Leads New York's Veterans Day Parade</h3><p class="crux">Suni Williams has spent 608 days in space, the second-most of any American astronaut. On 11 November she rode down Fifth Avenue as Grand Marshal of the Veterans Day Parade.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>On Wednesday 11 November, people lining Fifth Avenue in New York City got a space-flavoured surprise. Retired NASA astronaut Sunita "Suni" Williams rode past in the back of a classic convertible covered in patriotic decals. She was leading the city's Veterans Day Parade as its Grand Marshal. Williams is also a captain in the US Navy, so she was honoured both as an explorer and as a veteran. Space.com notes that astronauts serving as Grand Marshal is a long-standing tradition.</p>
+   <h4>Who is she?</h4>
+   <p>Williams flew to the International Space Station several times. She lived and worked there for months at a time, carried out spacewalks and ran science experiments. On her last mission, in 2024-2025, a planned short trip in a new spacecraft turned into a stay of about nine months, after problems with the capsule meant she and a crewmate returned on a different vehicle. She stayed calm and kept working the whole time, and she became an inspiration to people all over the world, especially in the US and India, where her father's family comes from.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Days in space across her career: 608.</li>
+    <li>That's the second-most for any American astronaut, behind Peggy Whitson's 695. Both record-holders are women.</li>
+    <li>Selected as a NASA astronaut: 1998.</li>
+    <li>Retired from NASA: December 2025.</li>
+    <li>Parade route: Fifth Avenue, New York City, 11 November 2026.</li>
+   </ul>
+   <p class="cool"><strong>Why it's cool:</strong> The top two Americans for total time in space are both women. Space careers are wide open to anyone willing to train for them.</p>
+   <p class="think"><strong>Think about it:</strong> 608 days is well over a year and a half. What would you miss most about Earth if you were away that long, and what would you take with you to feel at home?</p>
+   <p><a href="https://www.space.com/space-exploration/human-spaceflight/astronaut-suni-williams-rides-through-nyc-as-grand-marshal-of-the-veterans-day-parade-space-photo-of-the-day-for-nov-13-2026">Read source</a></p>
+  </div></details></article>
+
+ <article><details><summary><p class="meta">Unica Radio · Nov 11, 2026</p><h3>A Young Physicist Wins Italy's "Young Woman of Science" Award</h3><p class="crux">Angelica Simbula, a physics researcher at the University of Cagliari in Sardinia, has won the 2026 Young Science Woman Award. Teachers who help girls into science were honoured at the same ceremony.</p><p class="more">Read more</p></summary>
+  <div class="detail">
+   <h4>What happened</h4>
+   <p>On Tuesday 10 November, the city of Cagliari on the Italian island of Sardinia closed its Science Festival with an awards ceremony celebrating women in research. Angelica Simbula, a physicist at the University of Cagliari, received the Young Science Woman Award 2026 (in Italian, <em>Premio Donna di Scienza Giovane</em>). The main Women's Science Award, which gives the event its name, went to Serenella Medici. Two schoolteachers, Claudia Vacca and Federica Curreli, were honoured in a separate category for women in science at school.</p>
+   <h4>The numbers</h4>
+   <ul class="facts">
+    <li>Date: 10 November 2026, the final day of the Cagliari Science Festival.</li>
+    <li>Award categories: at least 3. They are the main Women's Science Award, the Young award, and an award for women in science at school.</li>
+    <li>Past winners include physicist Assunta Dordei of Italy's National Institute of Nuclear Physics (INFN) in Cagliari, who won the Young award in 2021.</li>
+   </ul>
+   <h4>Some background</h4>
+   <p>In many countries, fewer women than men work in physics. The gap is often biggest in the later stages of careers. Awards like this one are meant to make women scientists visible, so girls can picture themselves doing the same work. Including teachers matters too, because a great science teacher in middle school is often the reason a student falls in love with a subject in the first place.</p>
+   <p>Physics is the study of how everything works, from tiny particles to galaxies. Physicists might build detectors, write computer models or design experiments to test the laws of nature, so there are many different paths into the field.</p>
+   <p class="cool"><strong>Why it's cool:</strong> The ceremony honoured a young researcher and the teachers who help the next generation get started, all on the same stage.</p>
+   <p class="think"><strong>Think about it:</strong> Which teacher or person has made you more curious about a subject? What exactly did they do that worked?</p>
+   <p><a href="https://www.unicaradio.it/en/blog/2026/11/11/young-science-woman-award-2026-to-angelica-simbula/">Read source</a></p>
+  </div></details></article>
+</div>
+
+<h2>Did You Know?</h2>
+<div class="watch"><ul>
+ <li>On 18 November, Voyager 1 will be about 16.094 billion miles from Earth. That's how far light travels in 24 hours, so Voyager 1 will be one "light-day" away (Smithsonian, 10 Nov).</li>
+ <li>While you wait for Leonid meteors before dawn, look east: Mars and Jupiter will rise close together (AccuWeather). The Geminids, which can produce 100-150 meteors an hour under ideal skies, peak in mid-December.</li>
+ <li>Hubble has photographed globular cluster M30. It's a glittering ball of stars, some almost as old as the Universe, and the cluster may have formed outside our Milky Way (Space.com, 11 Nov).</li>
+ <li>A commercial satellite operated by BlackSky photographed the International Space Station from above, a view almost nobody gets to see (Space.com, 12 Nov).</li>
+ <li>Four volunteers spent 378 days living in a pretend Mars habitat for NASA's CHAPEA mission. They practised "Marswalks", grew food and coped with delayed messages from Earth (Smithsonian, 13 Nov).</li>
+ <li>A tiny new goby fish, <em>Trimma charon</em>, has been found in the Red Sea. The specimen described is only 12.1 mm long, and no one has seen the species again since, so it may live on deeper, unexplored reefs (SciTechDaily, 13 Nov).</li>
+</ul></div>
+<!--CONTENT END-->
+<footer>Teenread · Generated Nov 15, 2026 10:16 PM EST by Claude · <a href="./">Past editions</a> · Every story links to its source</footer>
+</div>
+<script>
+// Collapse button at the end of every expanded story
+document.querySelectorAll('article details').forEach(function(d){
+  var det=d.querySelector('.detail'); if(!det) return;
+  var p=document.createElement('p'); p.className='less';
+  p.innerHTML='<button type="button">Collapse</button>';
+  p.firstChild.onclick=function(){
+    d.open=false;
+    var a=d.closest('article');
+    if(a && a.getBoundingClientRect().top<0) a.scrollIntoView({block:'start'});
+  };
+  det.appendChild(p);
+});
+</script>
+<script>
+(function(){
+  var OWNER='BejoyKa', REPO='teenread', WF='teenread-refresh.yml', KEY='teenread_gh_token';
+  var API='https://api.github.com/repos/'+OWNER+'/'+REPO+'/actions/workflows/'+WF;
+  var GH_PAGE='https://github.com/'+OWNER+'/'+REPO+'/actions/workflows/'+WF;
+  var box=document.getElementById('refresh');
+  if(!box || /\/archive\//.test(location.pathname)) return;   // only on today's page
+  box.hidden=false;
+  var btn=document.getElementById('fetchBtn'), msg=document.getElementById('fetchMsg'),
+      form=document.getElementById('pwForm'), pw=document.getElementById('pwInput'),
+      remember=document.getElementById('pwRemember');
+  var token='';
+  function saved(){ try{return localStorage.getItem(KEY)||'';}catch(e){return '';} }
+  function save(v){ try{ v?localStorage.setItem(KEY,v):localStorage.removeItem(KEY);}catch(e){} }
+  function say(html){ msg.innerHTML=html; }
+  function sleep(ms){ return new Promise(function(r){setTimeout(r,ms);}); }
+  function b64(s){ return Uint8Array.from(atob(s),function(c){return c.charCodeAt(0);}); }
+  function gh(url,opt){
+    opt=opt||{}; opt.headers={'Accept':'application/vnd.github+json','Authorization':'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28'};
+    return fetch(url,opt);
+  }
+  function stamp(doc){ var f=doc.querySelector('footer'); return f?f.textContent:''; }
+  var before=stamp(document);
+
+  async function unlock(password){
+    var r=await fetch('refresh-key.json?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('refresh-key.json is missing from the site');
+    var k=await r.json();
+    var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveKey']);
+    var aes=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(k.salt),iterations:k.iter,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+    try{
+      var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(k.iv)},aes,b64(k.ct));
+    }catch(e){ return ''; }                   // wrong password
+    return new TextDecoder().decode(pt);
+  }
+
+  function ask(){ form.hidden=false; pw.focus(); }
+  document.getElementById('pwCancel').onclick=function(){ form.hidden=true; say(''); };
+  form.onsubmit=async function(ev){
+    ev.preventDefault();
+    say('Unlocking...');
+    try{
+      var t=await unlock(pw.value);
+      if(!t){ say('Wrong password.'); pw.select(); return; }
+      token=t; if(remember.checked) save(t);
+      pw.value=''; form.hidden=true; run();
+    }catch(e){ say('Could not unlock: '+e.message); }
+  };
+  btn.onclick=function(){ token=token||saved(); token?run():ask(); };
+
+  async function run(){
+    btn.disabled=true;
+    var t0=Date.now(), since=new Date(t0-60000).toISOString();
+    function el(){ var s=Math.round((Date.now()-t0)/1000); return Math.floor(s/60)+'m '+('0'+s%60).slice(-2)+'s'; }
+    try{
+      say('Starting...');
+      var r=await gh(API+'/dispatches',{method:'POST',body:JSON.stringify({ref:'main'})});
+      if(r.status===401||r.status===403||r.status===404){
+        var why=''; try{ why=(await r.json()).message||''; }catch(e){}
+        token=''; save(''); btn.disabled=false;
+        say('GitHub refused the token ('+r.status+(why?': '+why.replace(/</g,'&lt;'):'')+'). '+
+          (r.status===401?'The token is invalid or expired.':r.status===404?'The token cannot see the teenread repository.':'The token is missing the Actions: Read and write permission on teenread.')+
+          ' Make a new token and refresh-key.json.');
+        return;
+      }
+      if(r.status!==204) throw new Error('GitHub said '+r.status);
+      var run=null;
+      for(var i=0;i<20 && !run;i++){            // find the run we just started
+        await sleep(3000);
+        var lr=await (await gh(API+'/runs?event=workflow_dispatch&per_page=5&created=%3E%3D'+since)).json();
+        run=(lr.workflow_runs||[])[0]||null;
+      }
+      if(!run) throw new Error('could not find the started run');
+      var link=' <a href="'+run.html_url+'" target="_blank" rel="noopener">details</a>';
+      while(run.status!=='completed'){
+        say('Claude is finding today\'s best reads... '+el()+link+'<br>Usually 3 to 10 minutes.');
+        await sleep(10000);
+        run=await (await gh(run.url)).json();
+      }
+      if(run.conclusion!=='success'){
+        btn.disabled=false;
+        return say('The refresh failed ('+run.conclusion+'). The current edition is unchanged.'+link);
+      }
+      for(var j=0;j<40;j++){                     // wait for GitHub Pages to publish
+        say('Edition written. Publishing the page... '+el());
+        await sleep(10000);
+        try{
+          var html=await (await fetch(location.pathname+'?t='+Date.now(),{cache:'no-store'})).text();
+          var doc=new DOMParser().parseFromString(html,'text/html');
+          if(stamp(doc)&&stamp(doc)!==before){ say('Done. Loading the new edition...'); location.replace(location.pathname+'?t='+Date.now()); return; }
+        }catch(e){}
+      }
+      btn.disabled=false; say('The edition was written but the page has not updated yet. Reload in a minute.');
+    }catch(e){
+      btn.disabled=false;
+      say('Could not refresh: '+e.message+'. You can also <a href="'+GH_PAGE+'" target="_blank" rel="noopener">run it on GitHub</a>.');
+    }
+  }
+  var forget=document.createElement('div');
+  forget.innerHTML='<button type="button" class="link">forget on this device</button>';
+  forget.firstChild.onclick=function(){ token=''; save(''); say('Forgotten on this device.'); forget.hidden=true; };
+  forget.hidden=!saved(); box.appendChild(forget);
+})();
+</script>
+</body>
+</html>
